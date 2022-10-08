@@ -1,0 +1,20 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+
+    .username {
+        margin-left: 1em;
+    }
+
+    .threeDots {
+        justify-content: flex-end;
+    }
+
+    .image {
+        height: 50px;
+        width: 50px;
+    }
+}
+

@@ -1,6 +1,8 @@
 import { Nav, NavItem } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
+import styles from "./Navigator.module.scss";
+
 const tabs = [{
     route: "/home",
     icon: 'faHome',
@@ -16,7 +18,7 @@ const Navigator = (props) => {
   return (
     <div>
       {/* Top Bar */}
-      <nav className="navbar navbar-expand-md navbar-light sticky-top" role="navigation">
+      <nav className="navbar navbar-expand-md navbar-light fixed-top" role="navigation">
         <div className="container-fluid">
           <a className="navbar-brand" href="/home">P2P Market</a>
           <Nav className="ml-auto">
