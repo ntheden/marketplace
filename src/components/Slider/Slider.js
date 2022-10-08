@@ -3,7 +3,7 @@ import { Card, Image } from "react-bootstrap";
 import "swiper/css";
 
 import Header from "./Header";
-import style from "./Slider.module.scss";
+import styles from "./Slider.module.scss";
 
 export const Slider = (props) => {
   const media = "http://localhost:8002/v1/telegram/media";

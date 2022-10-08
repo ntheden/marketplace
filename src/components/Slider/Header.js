@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Card, Image, ListGroup, Modal } from 'react-bootstrap';
-import { BsThreeDots } from 'react-icons/bs';
+import { Card, Image } from 'react-bootstrap';
 
 import styles from "./Header.module.scss";
 
