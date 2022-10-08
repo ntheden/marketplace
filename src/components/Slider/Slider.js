@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Card, Image } from "react-bootstrap";
 import "swiper/css";
 
-import "./styles.css";
+import "../../styles.css";
 
 export const Slider = () => {
   const media = "http://localhost:8002/v1/telegram/media";
@@ -17,10 +17,9 @@ export const Slider = () => {
         <Image
             className="w-80"
             src={img}
-            roundedCircle={true}
             thumbnail={true}
         />
-          <Card.Footer>
+          <Card.Footer className="footer">
             {txt}
           </Card.Footer>
         </Card>
