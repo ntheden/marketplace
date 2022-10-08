@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Card, Image } from "react-bootstrap";
 import "swiper/css";
 
-import Header from "./Header";
+import OfferCard from "../OfferCard/OfferCard";
 import styles from "./Slider.module.scss";
 
 export const Slider = (props) => {
@@ -17,17 +17,7 @@ export const Slider = (props) => {
   const slide = (img, txt) => {
     return (
       <SwiperSlide>
-        <Card>
-          <Header user={user} />
-        <Image
-            className="w-80"
-            src={img}
-            thumbnail={true}
-        />
-          <Card.Footer className="footer">
-            {txt}
-          </Card.Footer>
-        </Card>
+        <OfferCard img={img} txt={txt}/>
       </SwiperSlide>
     )
   };
@@ -36,7 +26,7 @@ export const Slider = (props) => {
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
-          className="mySwiper"
+          direction="horizontal"
         >
           {slide(`${media}/photo_2022-09-08_08-03-15_7145625093855382528.jpg`, <p>eah they won't release the product to me, probably because it fails some surveillance checks, which annoys me greatly. You can use your real identity to buy it though. They just really want to know who you are, they seem to care more about that than selling product </p>)}
           {slide(`${media}/photo_2022-08-17_16-54-04_7145625149136533504.jpg`)}
