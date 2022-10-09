@@ -33,3 +33,14 @@
   }
 }
 
+@media screen and (max-width: 700px){
+  .card {
+    .image {
+      float: none;
+    }
+
+    .textBorder {
+      height: 100%;
+    }
+  }
+}
