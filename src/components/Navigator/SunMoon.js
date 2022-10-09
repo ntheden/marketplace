@@ -7,10 +7,29 @@ import styles from "./Navigator.module.scss";
 
 const SunMoon = () => {
   const [isDark, setIsDark] = useState(true);
+  const [isInit, setIsInit] = useState(true);
 
   const initialize = useEffect(() => {
+    if (!isInit) {
+      return;
+    }
+    setIsInit(false);
+    const theme = localStorage.getItem("Theme");
+    if (null === theme) {
+      setIsDark(true);
+      return;
+    }
+    setIsDark(theme === "Dark" ? true : false);
     // TODO: implement dark/light modes
-    console.log('switching to ' + (isDark ? 'dark mode' : 'light mode'))
+  }, [isInit]);
+
+  const changeTheme = useEffect(() => {
+    if (isInit) {
+      // initialization hasn't completed yet
+      return;
+    }
+    console.log('switching to ' + (isDark ? 'dark mode' : 'light mode'));
+    localStorage.setItem('Theme', isDark ? 'Dark' : 'Light');
   }, [isDark]);
 
   const onClick = () => {
