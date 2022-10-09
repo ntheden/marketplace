@@ -23,7 +23,7 @@ const pocItems = [
     img: `${mktplace}?msg_id=1758&thumb=1`,
     txt: "Hi",
   }, {
-    img: `${mktplace}?msg_id=6236&thumb=1`,
+    img: "no-photo-dark.png",
     txt: "Hi you",
   },
 ];
