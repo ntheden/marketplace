@@ -1,4 +1,5 @@
 import { Card, Image } from "react-bootstrap";
+import { NavLink } from 'react-router-dom';
 
 import Header from "./Header";
 import styles from "./OfferCard.module.scss";
@@ -33,18 +34,20 @@ const OfferCard = (props) => {
   return (
     <Card className={styles.card}>
       <Header user={user} />
-      <div className={styles.content}>
-        <Image
-            className={styles.image}
-            src={pocItems[props.card].img}
-            thumbnail={true}
-        />
-        <div className={styles.textBorder}>
-          <div className={styles.text}>
-            {pocItems[props.card].txt}
+      <NavLink to="/offer" className="nav-link">
+        <div className={styles.content}>
+          <Image
+              className={styles.image}
+              src={pocItems[props.card].img}
+              thumbnail={true}
+          />
+          <div className={styles.textBorder}>
+            <div className={styles.text}>
+              {pocItems[props.card].txt}
+            </div>
           </div>
         </div>
-      </div>
+      </NavLink>
       <Card.Footer className={styles.footer}/>
     </Card>
   );
