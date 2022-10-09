@@ -4,6 +4,7 @@ import { FaBitcoin } from 'react-icons/fa';
 import { Nav, NavItem } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
+import SunMoon from "./SunMoon/SunMoon";
 import styles from "./Navigator.module.scss";
 
 const tabs = [{
@@ -19,7 +20,22 @@ const tabs = [{
     icon: faGear,
     label: "Settings",
   },
-]
+];
+
+const IconCluster = () => {
+  return (
+      <div className={styles.iconCluster}>
+        <SunMoon />
+        <Nav className="ml-auto">
+          <NavItem>
+            <NavLink to="/filter" className="nav-link">
+              <FontAwesomeIcon size="lg" icon={faFilter} className={styles.topIcon}/>
+            </NavLink>
+          </NavItem>
+        </Nav>
+      </div>
+  );
+};
 
 const TopNavBar = (
   <nav className="navbar navbar-expand-md fixed-top bg-dark" role="navigation">
@@ -28,13 +44,7 @@ const TopNavBar = (
         <FaBitcoin className={styles.bitcoin} />
         <a className="navbar-brand text-" href="/home">Marketplace</a>
       </div>
-      <Nav className="ml-auto">
-        <NavItem>
-          <NavLink to="/search" className="nav-link">
-            <FontAwesomeIcon size="lg" icon={faFilter} className={styles.topIcon}/>
-          </NavLink>
-        </NavItem>
-      </Nav>
+        <IconCluster />
     </div>
   </nav>
 );

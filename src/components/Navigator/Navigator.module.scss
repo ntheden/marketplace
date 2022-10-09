@@ -12,4 +12,10 @@
 .topIcon {
   color: #ECB365;
   font-size: 20px;
+  cursor: pointer;
+}
+
+.iconCluster {
+  display: flex;
+  align-items: center;
 }
