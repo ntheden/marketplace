@@ -35,7 +35,7 @@ const Header = (user) => {
             <Button
               onClick={() => setPostMenuVisibility((prev) => !prev)}
               variant="link">
-              <BsThreeDots role="icon" />
+              <BsThreeDots role="icon" className={styles.threeDots}/>
             </Button>
           </Card.Link>
         </Card.Header>
