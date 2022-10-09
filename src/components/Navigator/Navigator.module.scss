@@ -19,3 +19,13 @@
   display: flex;
   align-items: center;
 }
+
+.tooltip:hover {
+  display: none;
+  position: absolute;
+}
+
+.topIcon:hover~.tooltip {
+  display: block;
+  text-color: white;
+}

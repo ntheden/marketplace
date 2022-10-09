@@ -4,7 +4,7 @@ import { FaBitcoin } from 'react-icons/fa';
 import { Nav, NavItem } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
-import SunMoon from "./SunMoon/SunMoon";
+import SunMoon from "./SunMoon";
 import styles from "./Navigator.module.scss";
 
 const tabs = [{
