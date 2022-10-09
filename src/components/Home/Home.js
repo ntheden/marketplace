@@ -1,10 +1,9 @@
-import { Slider } from "../Slider/Slider";
+import Feed from "../Feed/Feed";
 
 const Home = () => {
   return (
     <>
-      <Slider>
-      </Slider>
+      <Feed />
     </>
   );
 };

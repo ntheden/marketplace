@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./components/Home/Home";
+import Feed from "./components/Feed/Feed";
 import Navigator from "./components/Navigator/Navigator";
-import "./App.css";
+import styles from "./App.css";
 import "./styles.css";
 
 function App() {
@@ -10,13 +10,13 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/home" component={Home} />
-          <Route path="/search" component={Home} />
+          <Route path="/home" component={Feed} />
+          <Route path="/search" component={Feed} />
         </Routes>
       <Navigator />
-      <header className="App-header">
-        <Home />
-      </header>
+      <header className="App-header" />
+      <Feed className="feed"/>
+      <footer className="App-header" />
       </BrowserRouter>
     </div>
   );

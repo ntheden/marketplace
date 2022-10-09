@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Image } from 'react-bootstrap';
+import { Button, Card, Image } from 'react-bootstrap';
+import { BsThreeDots } from 'react-icons/bs';
 
 import styles from "./Header.module.scss";
 
@@ -30,6 +31,13 @@ const Header = (user) => {
             thumbnail={true}
           />
           <a href="/#username" className={styles.username} />
+          <Card.Link className={styles.threeDots}>
+            <Button
+              onClick={() => setPostMenuVisibility((prev) => !prev)}
+              variant="link">
+              <BsThreeDots role="icon" />
+            </Button>
+          </Card.Link>
         </Card.Header>
     );
 };

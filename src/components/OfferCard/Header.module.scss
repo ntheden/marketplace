@@ -1,20 +1,22 @@
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #064663 !important;
 
-    .username {
-        margin-left: 1em;
-    }
+  .username {
+    margin-left: 1em;
+  }
 
-    .threeDots {
-        justify-content: flex-end;
-    }
+  .threeDots {
+    justify-content: flex-end;
+  }
 
-    .image {
-        height: 50px;
-        width: 50px;
-    }
+  .image {
+    height: 50px;
+    width: 50px;
+    border: none;
+    background: inherit;
+  }
 }
 

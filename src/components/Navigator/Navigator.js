@@ -22,7 +22,7 @@ const tabs = [{
 ]
 
 const TopNavBar = (
-  <nav className="navbar navbar-expand-md navbar-light fixed-top bg-dark" role="navigation">
+  <nav className="navbar navbar-expand-md fixed-top bg-dark" role="navigation">
     <div className="container-fluid">
       <div>
         <FaBitcoin className={styles.bitcoin} />
@@ -31,7 +31,7 @@ const TopNavBar = (
       <Nav className="ml-auto">
         <NavItem>
           <NavLink to="/search" className="nav-link">
-            <FontAwesomeIcon size="lg" icon={faFilter}/>
+            <FontAwesomeIcon size="lg" icon={faFilter} className={styles.topIcon}/>
           </NavLink>
         </NavItem>
       </Nav>
@@ -41,7 +41,7 @@ const TopNavBar = (
 
 
 const BottomNavBar = (
-  <nav className="navbar fixed-bottom navbar-light bg-dark" role="navigation">
+  <nav className="navbar fixed-bottom bg-dark" role="navigation">
     <Nav className="w-100">
       <div className="d-flex flex-row justify-content-around w-100">
       {
@@ -49,7 +49,7 @@ const BottomNavBar = (
           <NavItem key={`tab-${index}`}>
             <NavLink to={tab.route} className="nav-link">
               <div className="row d-flex flex-column justify-content-center align-items-center">
-                <FontAwesomeIcon size="lg" icon={tab.icon}/>
+                <FontAwesomeIcon size="lg" icon={tab.icon} className={styles.icon}/>
                 { /* Only show label in larger viewports <div>{tab.label}</div> */ }
               </div>
             </NavLink>
