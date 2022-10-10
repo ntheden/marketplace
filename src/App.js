@@ -7,7 +7,7 @@ import Offer from "./components/Offer/Offer";
 import Peer from "./components/Peer/Peer";
 import Settings from "./components/Search/Search";
 import styles from "./App.css";
-import "./styles.css";
+//import "./styles.css";
 
 function App() {
   return (
@@ -17,9 +17,10 @@ function App() {
         <header className="App-header" />
         <Routes>
           <Route path="/" element={<Feed />}/>
-          <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="/bookmarks" element={<Feed filter="bookmarks" />} />
           <Route path="/offer" element={<Offer />} />
-          <Route path="/peer" element={<Peer />} />
+          <Route path="/peer/:peer_id" element={<Peer />} />
+          <Route path="/listings/:peer_id" element={<Feed />} /> {/* TODO pass in peer_id */}
           <Route path="/settings" element={<Settings />} />
         </Routes>
         <footer className="App-header" />
