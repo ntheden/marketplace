@@ -1,38 +1,22 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter, faSearch, faHome, faGear } from '@fortawesome/free-solid-svg-icons';
-import { FaBitcoin } from 'react-icons/fa';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
+import { FaBitcoin, FaHome, FaBookmark } from 'react-icons/fa';
+import { FaUserFriends } from 'react-icons/fa';
 import { Nav, NavItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
-import SunMoon from "./SunMoon";
+import Filter from "../Filter/Filter";
+import Search from "../Search/Search";
+import DarkMode from "./DarkMode";
 import styles from "./Navigator.module.scss";
 
-const tabs = [{
-    route: "/home",
-    icon: faHome,
-    label: "Home",
-  }, {
-    route: "/search",
-    icon: faSearch,
-    label: "Search",
-  }, {
-    route: "/settings",
-    icon: faGear,
-    label: "Settings",
-  },
-];
-
-const IconCluster = () => {
+const RightCluster = () => {
+  const pathname = useLocation().pathname
   return (
       <div className={styles.iconCluster}>
-        <SunMoon />
-        <Nav className="ml-auto">
-          <NavItem>
-            <NavLink to="/filter" className="nav-link">
-              <FontAwesomeIcon size="lg" icon={faFilter} className={styles.topIcon}/>
-            </NavLink>
-          </NavItem>
-        </Nav>
+        {(pathname === "/bookmarks" || pathname === "/") ? (<Filter />) : (<></>)}
+        <Search />
+        <DarkMode />
       </div>
   );
 };
@@ -42,30 +26,38 @@ const TopNavBar = (
     <div className="container-fluid">
       <div>
         <FaBitcoin className={styles.bitcoin} />
-        <a className="navbar-brand text-" href="/home">Marketplace</a>
+        <a className="navbar-brand text-" href="/">Marketplace</a>
       </div>
-        <IconCluster />
+      <RightCluster />
     </div>
   </nav>
 );
+
+
+const navItem = (pathname, icon) => {
+  return (
+    <NavItem>
+      <NavLink to={pathname} className="nav-link">
+        <div className="row d-flex flex-column justify-content-center align-items-center">
+          {icon}
+          { /* Only show label in larger viewports <div>{tab.label}</div> */ }
+        </div>
+      </NavLink>
+    </NavItem>
+  );
+};
 
 
 const BottomNavBar = (
   <nav className="navbar fixed-bottom bg-dark" role="navigation">
     <Nav className="w-100">
       <div className="d-flex flex-row justify-content-around w-100">
-      {
-        tabs.map((tab, index) => (
-          <NavItem key={`tab-${index}`}>
-            <NavLink to={tab.route} className="nav-link">
-              <div className="row d-flex flex-column justify-content-center align-items-center">
-                <FontAwesomeIcon size="lg" icon={tab.icon} className={styles.icon}/>
-                { /* Only show label in larger viewports <div>{tab.label}</div> */ }
-              </div>
-            </NavLink>
-          </NavItem>
-        ))
-      }
+        {navItem("/bookmarks", <FaBookmark className={styles.icon} />)}
+        {navItem("/", <FaHome className={styles.icon} />)}
+        {navItem(
+          "/settings",
+          <FontAwesomeIcon size="lg" icon={faGear} className={styles.icon}/>
+        )}
       </div>
     </Nav>
   </nav>

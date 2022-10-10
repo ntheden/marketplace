@@ -3,7 +3,7 @@ import { ListGroup } from "react-bootstrap";
 
 import styles from "./Feed.module.scss";
 
-const Feed = () => {
+const Feed = (props) => {
   return (
     <div className="d-flex justify-content-center">
       <ListGroup className={styles.group}>
