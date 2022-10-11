@@ -1,11 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
-import { FaBitcoin, FaHome, FaBookmark } from 'react-icons/fa';
+import { FaLayerGroup, FaBitcoin, FaHome, FaBookmark } from 'react-icons/fa';
 import { FaUserFriends } from 'react-icons/fa';
+import { FcGenericSortingDesc } from 'react-icons/fc';
 import { Nav, NavItem } from 'reactstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import Filter from "../Filter/Filter";
+import Sort from "../Sort/Sort";
 import Search from "../Search/Search";
 import DarkMode from "./DarkMode";
 import styles from "./Navigator.module.scss";
@@ -14,7 +16,15 @@ const RightCluster = () => {
   const pathname = useLocation().pathname
   return (
       <div className={styles.iconCluster}>
-        {(pathname === "/bookmarks" || pathname === "/") ? (<Filter />) : (<></>)}
+        {(pathname === "/bookmarks" || pathname === "/") ? (
+          <>
+           <Filter />
+           <Sort />
+          </>
+         ) : (
+          <>
+          </>
+         )}
         <Search />
         <DarkMode />
       </div>
