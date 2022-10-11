@@ -2,12 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { FaLayerGroup, FaBitcoin, FaHome, FaBookmark } from 'react-icons/fa';
 import { FaUserFriends } from 'react-icons/fa';
-import { FcGenericSortingDesc } from 'react-icons/fc';
 import { Nav, NavItem } from 'reactstrap';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import Filter from "../Filter/Filter";
-import Sort from "../Sort/Sort";
+import Arrangement from "../Arrangement/Arrangement";
 import Search from "../Search/Search";
 import DarkMode from "./DarkMode";
 import styles from "./Navigator.module.scss";
@@ -19,7 +18,7 @@ const RightCluster = () => {
         {(pathname === "/bookmarks" || pathname === "/") ? (
           <>
            <Filter />
-           <Sort />
+           <Arrangement />
           </>
          ) : (
           <>

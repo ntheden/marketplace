@@ -2,15 +2,23 @@ import { useState, useEffect } from 'react';
 import { FaSortAmountDownAlt } from 'react-icons/fa';
 import { Modal, Button } from "react-bootstrap";
 import { MDBRadio as Radio } from 'mdb-react-ui-kit';
+import { useLocation } from 'react-router-dom';
 
 import styles from "../Navigator/Navigator.module.scss";
 
-// A better name for this is Arrangement
-const Sort = () => {
+const Arrangement = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const pathname = useLocation().pathname;
 
   const onChange = (e, name) => {
-    console.log(name, e.target.value);
+    let key = "Arrangement.Feed";
+    if (pathname === "/bookmarks") {
+      key = "Arrangement.Bookmarks";
+    }
+    if (e.target.value === "on") {
+      localStorage.setItem(key, name);
+    }
+    console.log(key, e.target.value);
   };
 
   return (
@@ -27,19 +35,19 @@ const Sort = () => {
           name='flexRadioDefault'
           id='newest'
           label='Newest First'
-          onChange={(e) => onChange(e, 'newest')}
+          onChange={(e) => onChange(e, 'Newest')}
         />
         <Radio
           name='flexRadioDefault'
           id='oldest'
           label='Oldest First'
-          onChange={(e) => onChange(e, 'oldest')}
+          onChange={(e) => onChange(e, 'Oldest')}
         />
         <Radio
           name='flexRadioDefault'
           id='shuffle'
           label='Shuffle'
-          onChange={(e) => onChange(e, 'shuffle')}
+          onChange={(e) => onChange(e, 'Shuffle')}
         />
       </Modal.Body>
     </Modal>
@@ -47,4 +55,4 @@ const Sort = () => {
   );
 };
 
-export default Sort;
+export default Arrangement;

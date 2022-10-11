@@ -9,40 +9,27 @@ import styles from "../Navigator/Navigator.module.scss";
 const Filter = () => {
   const [showMenu, setShowMenu] = useState(false);
 
+  // TODO: filter out stuff that doesn't match, for instance:
+  // 1. has picture
+  // 2. has word on the user's banned list. There will
+  //    be a default short list of hashed banned words that
+  //    the user can modify
+  const filters = localStorage.getItem('filters');
+
   const onChange = (e, name) => {
     console.log(name, e.target.value);
   };
 
+  const onClick = () => {
+    console.log('filter clicked');
+  };
+
   return (
     <>
-    <Button onClick={() => setShowMenu((prev) => !prev)} variant="link">
+    <Button onClick={onClick} variant="link">
+    {/* <Button onClick={() => setShowMenu((prev) => !prev)} variant="link"> */}
       <FaFilter className={styles.topIcon} />
     </Button>
-    <Modal
-      show={showMenu}
-      onHide={() => setShowMenu(false)}
-      centered={true}>
-      <Modal.Body>
-        <Radio
-          name='flexRadioDefault'
-          id='newest'
-          label='Newest First'
-          onChange={(e) => onChange(e, 'newest')}
-        />
-        <Radio
-          name='flexRadioDefault'
-          id='oldest'
-          label='Oldest First'
-          onChange={(e) => onChange(e, 'oldest')}
-        />
-        <Radio
-          name='flexRadioDefault'
-          id='shuffle'
-          label='Shuffle'
-          onChange={(e) => onChange(e, 'shuffle')}
-        />
-      </Modal.Body>
-    </Modal>
     </>
   );
 };
