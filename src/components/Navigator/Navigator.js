@@ -8,7 +8,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import Filter from "../Filter/Filter";
 import Arrangement from "../Arrangement/Arrangement";
 import Search from "../Search/Search";
-import DarkMode from "./DarkMode";
+import DarkMode from "../DarkMode/DarkMode";
 import styles from "./Navigator.module.scss";
 
 const RightCluster = () => {

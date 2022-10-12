@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { Button } from "react-bootstrap";
 
-import styles from "./Navigator.module.scss";
+import styles from "../Navigator/Navigator.module.scss";
 
 const DarkMode = () => {
   const [isDark, setIsDark] = useState(true);
