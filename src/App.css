@@ -2,6 +2,7 @@
   text-align: center;
   background-color: #041C32;
   min-height: 100vh;
+  /* this margin keeps the scroll bar so the bottom icons don't shift */
   margin-bottom: 40px;
 }
 
@@ -18,3 +19,8 @@
 .App-link {
   color: #61dafb;
 }
+
+.navbar-custom {
+  background-color: #212529;
+}
+
