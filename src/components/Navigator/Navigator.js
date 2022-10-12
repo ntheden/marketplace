@@ -1,8 +1,7 @@
 import { BsGearFill } from 'react-icons/bs';
 import { FaLayerGroup, FaBitcoin, FaHome, FaBookmark } from 'react-icons/fa';
 import { Button } from 'react-bootstrap';
-import { Nav, NavItem } from 'reactstrap';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Filter from "../Filter/Filter";
 import Arrangement from "../Arrangement/Arrangement";
@@ -35,16 +34,20 @@ const TopRightCluster = () => {
 
 
 const Navigator = () => {
+  const navigate = useNavigate();
+
+  const bottomButtonClick = navLink => {
+    navigate(navLink);
+  };
+
   const navItem = (pathname, icon) => {
     return (
-      <NavItem>
-        <NavLink to={pathname} className="nav-link">
-          <div className="row d-flex flex-column justify-content-center align-items-center">
-            {icon}
-            { /* Only show label in larger viewports <div>{tab.label}</div> */ }
-          </div>
-        </NavLink>
-      </NavItem>
+      <div className="row d-flex flex-column justify-content-center align-items-center">
+        <Button onClick={() => bottomButtonClick(pathname)} variant="link">
+          {icon}
+          { /* Only show label in larger viewports <div>{tab.label}</div> */ }
+        </Button>
+      </div>
     );
   };
 
@@ -62,13 +65,11 @@ const Navigator = () => {
 
   const BottomNavBar = (
     <nav className="navbar navbar-custom fixed-bottom bg-dark" role="navigation">
-      <Nav className="w-100">
-        <div className="d-flex flex-row justify-content-around w-100">
-          {navItem("/bookmarks", <FaBookmark className={styles.icon} />)}
-          {navItem("/", <FaHome className={styles.icon} />)}
-          {navItem("/settings", <BsGearFill className={styles.icon} />)}
-        </div>
-      </Nav>
+      <div className="d-flex flex-row justify-content-around w-100">
+        {navItem("/bookmarks", <FaBookmark className={styles.icon} />)}
+        {navItem("/", <FaHome className={styles.icon} />)}
+        {navItem("/settings", <BsGearFill className={styles.icon} />)}
+      </div>
     </nav>
   );
 
