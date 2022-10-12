@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear } from '@fortawesome/free-solid-svg-icons';
+import { useState, useEffect } from 'react';
+import { BsGearFill } from 'react-icons/bs';
 import { FaLayerGroup, FaBitcoin, FaHome, FaBookmark } from 'react-icons/fa';
 import { FaUserFriends } from 'react-icons/fa';
-import { Nav, NavItem } from 'reactstrap';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Filter from "../Filter/Filter";
 import Arrangement from "../Arrangement/Arrangement";
@@ -14,27 +13,7 @@ import styles from "./Navigator.module.scss";
 
 
 const Navigator = () => {
-  const [homeIcon, setHomeIcon] = useState();
-
-  const navItem = (pathname, icon) => {
-    let newIcon = {...icon};
-    const onClick = (e, pathname) => {
-      newIcon.className = styles.iconRed;
-      setHomeIcon(newIcon);
-      console.log('clicked', pathname, "icon", newIcon);
-    };
-    return (
-      <NavItem onClick={(e) => onClick(e, pathname)}>
-        <NavLink to={pathname} className="nav-link">
-          <div className="row d-flex flex-column justify-content-center align-items-center">
-            {icon}
-            { /* Only show label in larger viewports <div>{tab.label}</div> */ }
-          </div>
-        </NavLink>
-      </NavItem>
-    );
-  };
-
+  const navigate = useNavigate();
 
   const RightCluster = () => {
     const pathname = useLocation().pathname
@@ -56,7 +35,7 @@ const Navigator = () => {
   };
 
   const TopNavBar = (
-    <nav className="navbar navbar-expand-md fixed-top bg-dark" role="navigation">
+    <nav className="navbar navbar-custom navbar-expand-md fixed-top bg-dark" role="navigation">
       <div className="container-fluid">
         <div>
           <FaBitcoin className={styles.bitcoin} />
@@ -67,20 +46,27 @@ const Navigator = () => {
     </nav>
   );
 
+  const bottomButtonClick = navLink => {
+    navigate(navLink);
+  };
 
   const BottomNavBar = () => {
     return(
-      <nav className="navbar fixed-bottom bg-dark" role="navigation">
-        <Nav className="w-100">
-          <div className="d-flex flex-row justify-content-around w-100">
-            {navItem("/bookmarks", <FaBookmark className={styles.icon} />)}
-            {navItem("/", <FaHome className={styles.icon} />)}
-            {navItem(
-              "/settings",
-              <FontAwesomeIcon size="lg" icon={faGear} className={styles.icon} />
-            )}
-          </div>
-        </Nav>
+      <nav className="navbar navbar-custom fixed-bottom navbar-dark bg-dark">
+        <div className="d-flex flex-row justify-content-around w-100">
+          <Button onClick={() => bottomButtonClick("/bookmarks")} variant="link">
+            <FaBookmark className={styles.icon} />
+            { /* Only show label in larger viewports <div>{tab.label}</div> */ }
+          </Button>
+          <Button onClick={() => bottomButtonClick("/")} variant="primary">
+            <FaHome className={styles.icon} />
+            { /* Only show label in larger viewports <div>{tab.label}</div> */ }
+          </Button>
+          <Button onClick={() => bottomButtonClick("/settings")} variant="link">
+            <BsGearFill className={styles.icon} />
+            { /* Only show label in larger viewports <div>{tab.label}</div> */ }
+          </Button>
+        </div>
       </nav>
     );
   };

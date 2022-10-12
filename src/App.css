@@ -2,7 +2,6 @@
   text-align: center;
   background-color: #041C32;
   min-height: 100vh;
-  margin-bottom: 40px;
 }
 
 .App-header {
@@ -18,3 +17,8 @@
 .App-link {
   color: #61dafb;
 }
+
+.navbar-custom {
+  background-color: #212529;
+}
+
