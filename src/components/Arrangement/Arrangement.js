@@ -1,25 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { FaSortAmountDownAlt } from 'react-icons/fa';
 import { Modal, Button } from "react-bootstrap";
 import { MDBRadio as Radio } from 'mdb-react-ui-kit';
-import { useLocation } from 'react-router-dom';
 
+import { FeedContext } from "../../App";
 import styles from "../Navigator/Navigator.module.scss";
 
 const Arrangement = () => {
+  const { refreshFeed, setRefreshFeed } = useContext(FeedContext);
   const [showMenu, setShowMenu] = useState(false);
-  const pathname = useLocation().pathname;
+  const [arrangement, setArrangement] = useState(
+    localStorage.getItem("Arrangement") || "Newest"
+  );
 
-  const onChange = (e, name) => {
-    let key = "Arrangement.Feed";
-    if (pathname === "/bookmarks") {
-      key = "Arrangement.Bookmarks";
+  useEffect(() => {
+    if (arrangement === undefined) {
+      return;
     }
-    if (e.target.value === "on") {
-      localStorage.setItem(key, name);
-    }
-    console.log(key, e.target.value);
-  };
+    localStorage.setItem("Arrangement", arrangement);
+    console.log("Arrangement Arrangement", arrangement);
+    setRefreshFeed((prev) => !prev);
+  }, [arrangement]);
 
   return (
     <>
@@ -33,21 +34,24 @@ const Arrangement = () => {
       <Modal.Body>
         <Radio
           name='flexRadioDefault'
-          id='newest'
-          label='Newest First'
-          onChange={(e) => onChange(e, 'Newest')}
+          id='Newest'
+          label='Newest on Top'
+          checked={arrangement === "Newest"}
+          onChange={() => setArrangement('Newest')}
         />
         <Radio
           name='flexRadioDefault'
-          id='oldest'
-          label='Oldest First'
-          onChange={(e) => onChange(e, 'Oldest')}
+          id='Nldest'
+          label='Oldest on Top'
+          checked={arrangement === "Oldest"}
+          onChange={() => setArrangement('Oldest')}
         />
         <Radio
           name='flexRadioDefault'
-          id='shuffle'
+          id='Shuffle'
           label='Shuffle'
-          onChange={(e) => onChange(e, 'Shuffle')}
+          checked={arrangement === "Shuffle"}
+          onChange={() => setArrangement('Shuffle')}
         />
       </Modal.Body>
     </Modal>

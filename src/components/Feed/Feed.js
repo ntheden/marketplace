@@ -1,12 +1,21 @@
-import OfferCard from "../OfferCard/OfferCard";
+import { useState } from "react";
 import { ListGroup } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
 
+import OfferCard from "../OfferCard/OfferCard";
 import csvToArray from "../../lib/csv";
 import styles from "./Feed.module.scss";
 
 
-const Feed = (props) => {
+const createEnum = (values) => {
+  const enumObject = {};
+  for (const val of values) {
+    enumObject[val] = val;
+  }
+  return Object.freeze(enumObject);
+};
+
+
+const Feed = ({refreshFeed}) => {
   const getBookmarks = () => {
     const bookmarks = csvToArray(localStorage.getItem("Bookmarks"))[0];
     if (bookmarks[0] === "undefined") {
@@ -15,13 +24,11 @@ const Feed = (props) => {
     return bookmarks;
   };
 
-  const applyFilters = ({filter}) => {
-    let items = [];
-    if (filter === undefined) {
-      return [0, 1, 2, 3];
-    } else if (filter === "bookmarks") {
-      return getBookmarks();
+  const applyFilters = (items) => {
+    if (window.location.pathname === "/bookmarks") {
+      items = getBookmarks();
     }
+    // TODO: filter based on filters defined in localStorage
     return items;
   };
 
@@ -43,42 +50,30 @@ const Feed = (props) => {
     return o;
   }
 
-  const createEnum = (values) => {
-    const enumObject = {};
-    for (const val of values) {
-      enumObject[val] = val;
-    }
-    return Object.freeze(enumObject);
-  };
-
   const arrange = (ar: Array<number>) => {
-      const eArrangement = createEnum(["Shuffle", "Newest", "Oldest"]);
-      let key = "Arrangement.Feed";
-      if (pathname === "/bookmarks") {
-        key = "Arrangement.Bookmarks";
-      }
-      let arrangement = localStorage.getItem(key);
-      if (arrangement === null) {
-        localStorage.setItem(key, eArrangement.Newest);
-        arrangement = eArrangement.Newest;
-      }
-      console.log("arrangement", arrangement);
-      switch(arrangement) {
-        case eArrangement.Shuffle:
-          return shuffle(ar);
-        case eArrangement.Newest:
-          return ar.sort((first: number, second: number) => {
-            return (first > second ? -1 : 1)
-          })
-        case eArrangement.Oldest:
-          return ar.sort((first: number, second: number) => {
-            return (first > second ? 1 : -1)
-          })
-      }
+    console.log('going to arrange', ar);
+    const eArrangement = createEnum(["Shuffle", "Newest", "Oldest"]);
+    let arrangement = localStorage.getItem("Arrangement");
+    if (arrangement === null) {
+      localStorage.setItem("Arrangement", eArrangement.Newest);
+      arrangement = eArrangement.Newest;
+    }
+    console.log("Feed Arrangement", arrangement);
+    switch(arrangement) {
+      case eArrangement.Shuffle:
+        return shuffle(ar);
+      case eArrangement.Newest:
+        return ar.sort((first: number, second: number) => {
+          return (first > second ? -1 : 1)
+        })
+      case eArrangement.Oldest:
+        return ar.sort((first: number, second: number) => {
+          return (first > second ? 1 : -1)
+        })
+    }
   }
 
-  const pathname = useLocation().pathname;
-  const items = listGroupItems(arrange(applyFilters(props)));
+  const items = listGroupItems(arrange(applyFilters([0, 1, 2, 3])));
 
   return (
     <div className="d-flex justify-content-center">
