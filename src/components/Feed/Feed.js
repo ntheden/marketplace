@@ -51,14 +51,12 @@ const Feed = ({refreshFeed}) => {
   }
 
   const arrange = (ar: Array<number>) => {
-    console.log('going to arrange', ar);
     const eArrangement = createEnum(["Shuffle", "Newest", "Oldest"]);
     let arrangement = localStorage.getItem("Arrangement");
     if (arrangement === null) {
       localStorage.setItem("Arrangement", eArrangement.Newest);
       arrangement = eArrangement.Newest;
     }
-    console.log("Feed Arrangement", arrangement);
     switch(arrangement) {
       case eArrangement.Shuffle:
         return shuffle(ar);

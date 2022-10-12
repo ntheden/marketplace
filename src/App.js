@@ -1,4 +1,4 @@
-import { React, useState, createContext } from "react";
+import { useState, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Bookmarks from "./components/Bookmarks/Bookmarks";

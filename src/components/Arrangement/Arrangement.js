@@ -18,7 +18,6 @@ const Arrangement = () => {
       return;
     }
     localStorage.setItem("Arrangement", arrangement);
-    console.log("Arrangement Arrangement", arrangement);
     setRefreshFeed((prev) => !prev);
   }, [arrangement]);
 
@@ -34,21 +33,21 @@ const Arrangement = () => {
       <Modal.Body>
         <Radio
           name='flexRadioDefault'
-          id='Newest'
+          id='newest'
           label='Newest on Top'
           checked={arrangement === "Newest"}
           onChange={() => setArrangement('Newest')}
         />
         <Radio
           name='flexRadioDefault'
-          id='Nldest'
+          id='oldest'
           label='Oldest on Top'
           checked={arrangement === "Oldest"}
           onChange={() => setArrangement('Oldest')}
         />
         <Radio
           name='flexRadioDefault'
-          id='Shuffle'
+          id='shuffle'
           label='Shuffle'
           checked={arrangement === "Shuffle"}
           onChange={() => setArrangement('Shuffle')}
