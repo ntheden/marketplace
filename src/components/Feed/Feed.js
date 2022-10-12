@@ -3,16 +3,11 @@ import { ListGroup } from "react-bootstrap";
 
 import OfferCard from "../OfferCard/OfferCard";
 import csvToArray from "../../lib/csv";
+import createEnum from "../../lib/enum";
 import styles from "./Feed.module.scss";
+import { consts } from '../../config';
 
-
-const createEnum = (values) => {
-  const enumObject = {};
-  for (const val of values) {
-    enumObject[val] = val;
-  }
-  return Object.freeze(enumObject);
-};
+console.log(consts.apiEndpoint);
 
 
 const Feed = ({refreshFeed}) => {
