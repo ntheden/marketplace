@@ -42,12 +42,10 @@ const Navigator = () => {
 
   const navItem = (pathname, icon) => {
     return (
-      <div className="row d-flex flex-column justify-content-center align-items-center">
-        <Button onClick={() => bottomButtonClick(pathname)} variant="link">
-          {icon}
-          { /* Only show label in larger viewports <div>{tab.label}</div> */ }
-        </Button>
-      </div>
+      <Button onClick={() => bottomButtonClick(pathname)} variant="link">
+        {icon}
+        { /* Only show label in larger viewports <div>{tab.label}</div> */ }
+      </Button>
     );
   };
 
