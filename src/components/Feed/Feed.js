@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from 'axios';
+import { useState, useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
 
 import OfferCard from "../OfferCard/OfferCard";
@@ -7,10 +8,25 @@ import createEnum from "../../lib/enum";
 import styles from "./Feed.module.scss";
 import { consts } from '../../config';
 
-console.log(consts.apiEndpoint);
-
 
 const Feed = ({refreshFeed}) => {
+  const [offerIds, setOfferIds] = useState([]);
+
+  useEffect(() => {
+    console.log("API is at", consts.apiEndpoint);
+    const getIds = async () => {
+      try {
+        let response = await axios.get(`${consts.apiEndpoint}/@bitcoinp2pmarketplace`);
+        setOfferIds(response.data);
+        //setOfferIds([6310, 6250, 1758, 2664]);
+        console.log("offer ids are:", offerIds);
+      } catch(err) {
+        console.log(err);
+      }
+    };
+    getIds();
+  }, []);
+
   const getBookmarks = () => {
     const bookmarks = csvToArray(localStorage.getItem("Bookmarks"))[0];
     if (bookmarks[0] === "undefined") {
@@ -20,6 +36,9 @@ const Feed = ({refreshFeed}) => {
   };
 
   const applyFilters = (items) => {
+    if (items === undefined) {
+      return [];
+    }
     if (window.location.pathname === "/bookmarks") {
       items = getBookmarks();
     }
@@ -31,7 +50,7 @@ const Feed = ({refreshFeed}) => {
     return values.map((item, index) => {
       return (
         <ListGroup.Item key={index} className={styles.item}>
-          <OfferCard card={item} />
+          <OfferCard offerId={item} />
         </ListGroup.Item>
       );
     });
@@ -46,6 +65,9 @@ const Feed = ({refreshFeed}) => {
   }
 
   const arrange = (ar: Array<number>) => {
+    if (ar === undefined) {
+      return [];
+    }
     const eArrangement = createEnum(["Shuffle", "Newest", "Oldest"]);
     let arrangement = localStorage.getItem("Arrangement");
     if (arrangement === null) {
@@ -66,7 +88,7 @@ const Feed = ({refreshFeed}) => {
     }
   }
 
-  const items = listGroupItems(arrange(applyFilters([0, 1, 2, 3])));
+  const items = listGroupItems(arrange(applyFilters(offerIds)));
 
   return (
     <div className="d-flex justify-content-center">
