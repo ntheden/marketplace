@@ -18,10 +18,13 @@
 
   .text {
     text-align: left;
+    height: 300px;
+    width: 100%;
     font-size: 17px;
     margin: 10px;
     color: #ECB365;
     white-space: pre-wrap;
+    overflow-y: hidden;
   }
 
   .footer {
