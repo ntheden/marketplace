@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Bookmarks from "./components/Bookmarks/Bookmarks";
 import Feed from "./components/Feed/Feed";
 import Navigator from "./components/Navigator/Navigator";
-import Offer from "./components/Offer/Offer";
+import OfferDetail from "./components/OfferDetail/OfferDetail";
 import Peer from "./components/Peer/Peer";
 import Settings from "./components/Search/Search";
 import styles from "./App.css";
@@ -25,7 +25,7 @@ function App() {
             <Route path="/" element={<Feed refresh={refreshFeed} />}/>
             <Route path="/bookmarks" element={<Feed refresh={refreshFeed} />} />
             <Route path="/history" element={<Feed refresh={refreshFeed} />} />
-            <Route path="/offer" element={<Offer />} />
+            <Route path="/offer" element={<OfferDetail />} />
             <Route path="/peer/:peer_id" element={<Peer />} />
             <Route path="/listings/:peer_id" element={<Feed />} /> {/* TODO pass in peer_id */}
             <Route path="/settings" element={<Settings />} />
