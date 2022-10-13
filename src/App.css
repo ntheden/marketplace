@@ -2,7 +2,6 @@
   text-align: center;
   background-color: #041C32;
   min-height: 100vh;
-  min-width: 100vw;
   /* this margin keeps the scroll bar so the bottom icons don't shift */
   margin-bottom: 40px;
 }

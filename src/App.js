@@ -24,6 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Feed refresh={refreshFeed} />}/>
             <Route path="/bookmarks" element={<Feed refresh={refreshFeed} />} />
+            <Route path="/history" element={<Feed refresh={refreshFeed} />} />
             <Route path="/offer" element={<Offer />} />
             <Route path="/peer/:peer_id" element={<Peer />} />
             <Route path="/listings/:peer_id" element={<Feed />} /> {/* TODO pass in peer_id */}

@@ -68,6 +68,7 @@ const OfferCard = ({offerId}) => {
             <LazyLoadImage
                 className={styles.image}
                 src={imageLink}
+                visibleByDefault={true}
             />
             <div className={styles.textBorder}>
               <div className={styles.text}>

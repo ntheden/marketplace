@@ -1,5 +1,5 @@
 import { BsGearFill } from 'react-icons/bs';
-import { FaLayerGroup, FaBitcoin, FaHome, FaBookmark } from 'react-icons/fa';
+import { FaHistory, FaLayerGroup, FaBitcoin, FaHome, FaBookmark } from 'react-icons/fa';
 import { Button } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -16,7 +16,9 @@ const TopRightCluster = () => {
   const pathname = useLocation().pathname
   return (
       <div className={styles.iconCluster}>
-        {(pathname === "/bookmarks" || pathname === "/") ? (
+        {(pathname === "/bookmarks" ||
+          pathname === "/" ||
+          pathname === "/history") ? (
           <>
            <Filter />
            <Arrangement />
@@ -65,6 +67,7 @@ const Navigator = () => {
     <nav className="navbar navbar-custom fixed-bottom bg-dark" role="navigation">
       <div className="d-flex flex-row justify-content-around w-100">
         {navItem("/bookmarks", <FaBookmark className={styles.icon} />)}
+        {navItem("/history", <FaHistory className={styles.icon} />)}
         {navItem("/", <FaHome className={styles.icon} />)}
         {navItem("/settings", <BsGearFill className={styles.icon} />)}
       </div>

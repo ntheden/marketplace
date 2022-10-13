@@ -28,13 +28,15 @@ const Header = (user) => {
 
     return (
         <Card.Header className={styles.header}>
-          <Image
-            className={styles.image}
-            src={thumbnail}
-            roundedCircle={true}
-            thumbnail={true}
-          />
-          <a href="/#username" className={styles.username}>{friendlyName}</a>
+          <div className={styles.userCluster}>
+            <Image
+              className={styles.image}
+              src={thumbnail}
+              roundedCircle={true}
+              thumbnail={true}
+            />
+            <a href='#username' className={styles.username}>{friendlyName}</a>
+          </div>
           <Card.Link className={styles.threeDots}>
             <Button variant="link">
               <BsThreeDots role="icon" className={styles.threeDots}/>

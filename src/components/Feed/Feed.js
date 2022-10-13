@@ -7,6 +7,7 @@ import csvToArray from "../../lib/csv";
 import createEnum from "../../lib/enum";
 import styles from "./Feed.module.scss";
 import { consts } from '../../config';
+import { trackWindowScroll } from 'react-lazy-load-image-component';
 
 
 const Feed = ({refreshFeed}) => {
@@ -99,4 +100,4 @@ const Feed = ({refreshFeed}) => {
   );
 };
 
-export default Feed;
+export default trackWindowScroll(Feed);
