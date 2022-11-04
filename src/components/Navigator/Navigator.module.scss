@@ -1,3 +1,5 @@
+@import "../../App";
+
 .bitcoin {
   color: orange;
   font-size: 30px;
@@ -5,12 +7,12 @@
 }
 
 .icon {
-  color: #ECB365;
+  color: var(--icon);
   font-size: 30px;
 }
 
 .topIcon {
-  color: #ECB365;
+  color: var(--icon);
   font-size: 20px;
   cursor: pointer;
 }

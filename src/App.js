@@ -7,7 +7,7 @@ import Navigator from "./components/Navigator/Navigator";
 import OfferDetail from "./components/OfferDetail/OfferDetail";
 import Peer from "./components/Peer/Peer";
 import Settings from "./components/Search/Search";
-import styles from "./App.css";
+import styles from "./App.scss";
 //import "./styles.css";
 
 export const FeedContext = createContext(null);

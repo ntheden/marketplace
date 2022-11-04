@@ -50,7 +50,7 @@ const Feed = ({refreshFeed}) => {
   const listGroupItems = (values) => {
     return values.map((item, index) => {
       return (
-        <ListGroup.Item key={index} className={styles.item}>
+        <ListGroup.Item key={index} className={[styles.item, "border-0"].join(" ")}>
           <OfferCard offerId={item} />
         </ListGroup.Item>
       );

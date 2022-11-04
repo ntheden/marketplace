@@ -1,0 +1,48 @@
+// Palette chosen from
+// DARK: https://colorhunt.co/palette/041c3204293a064663ecb365
+:root[data-theme="theme-dark"] {
+  --primary: #064663;
+  --background: #041C32;
+  --card-header: #064663;
+  --card-background: #04293A;
+  --icon: #ECB365;
+  --text: #ECB365;
+  --navbar: #212529;
+}
+// LIGHT: https://colorhunt.co/palette/f9f7f7dbe2ef3f72af112d4e
+:root[data-theme="theme-light"] {
+  --primary: #064663;
+  --background: #DBE2EF;
+  --card-header: #F9F7F7;
+  --card-background: #F9F7F7;
+  --icon: #DBE2EF; //#0275d8;
+  --text: black;
+  --navbar: #3F72AF; //#DBE2EF;
+}
+
+.App {
+  text-align: center;
+  background-color: var(--background);
+  min-height: 100vh;
+  /* this margin keeps the scroll bar so the bottom icons don't shift */
+  margin-bottom: 40px;
+}
+
+.App-header {
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.navbar-custom {
+  background-color: var(--navbar);
+}
+

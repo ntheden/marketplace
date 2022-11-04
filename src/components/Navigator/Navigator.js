@@ -52,7 +52,7 @@ const Navigator = () => {
   };
 
   const TopNavBar = (
-    <nav className="navbar navbar-custom navbar-expand-md fixed-top bg-dark" role="navigation">
+    <nav className="navbar navbar-custom navbar-expand-md fixed-top" role="navigation">
       <div className="container-fluid">
         <div>
           <FaBitcoin className={styles.bitcoin} />
@@ -64,7 +64,7 @@ const Navigator = () => {
   );
 
   const BottomNavBar = (
-    <nav className="navbar navbar-custom fixed-bottom bg-dark" role="navigation">
+    <nav className="navbar navbar-custom fixed-bottom" role="navigation">
       <div className="d-flex flex-row justify-content-around w-100">
         {navItem("/bookmarks", <FaBookmark className={styles.icon} />)}
         {navItem("/history", <FaHistory className={styles.icon} />)}

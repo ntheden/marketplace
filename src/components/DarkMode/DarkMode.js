@@ -13,21 +13,26 @@ const DarkMode = () => {
       return;
     }
     setIsInit(false);
-    const theme = localStorage.getItem("Theme");
-    if (null === theme) {
+    const localTheme = localStorage.getItem("Theme");
+    if (null === localTheme) {
       setIsDark(true);
       return;
     }
-    setIsDark(theme === "Dark" ? true : false);
-    // TODO: implement dark/light modes
+    setIsDark(localTheme === "Dark" ? true : false);
+    const theme = (localTheme === "Dark" ? "dark" : "light");
+    const html = document.querySelector('html');
+    html.dataset.theme = `theme-${theme}`;
   }, [isInit]);
 
   const changeTheme = useEffect(() => {
     if (isInit) {
       return;
     }
-    console.log('switching to ' + (isDark ? 'dark mode' : 'light mode'));
+    //console.log('switching to ' + (isDark ? 'dark mode' : 'light mode'));
     localStorage.setItem('Theme', isDark ? 'Dark' : 'Light');
+    const theme = (isDark ? "dark" : "light");
+    const html = document.querySelector('html');
+    html.dataset.theme = `theme-${theme}`;
   }, [isDark]);
 
   return (

@@ -1,6 +1,8 @@
+@import '../../App';
+
 .card {
   display: flex;
-  background: #04293A !important;
+  background: var(--card-background) !important;
 
   .image {
     float: left;
@@ -22,13 +24,13 @@
     width: 100%;
     font-size: 17px;
     margin: 10px;
-    color: #ECB365;
+    color: var(--text);
     white-space: pre-wrap;
     overflow-y: hidden;
   }
 
   .footer {
-    background: #064663;
+    background: var(--card-header);
   }
 
   .content:hover {

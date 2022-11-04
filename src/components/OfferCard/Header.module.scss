@@ -1,8 +1,10 @@
+@import "../../App";
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #064663 !important;
+  background: var(--card-header) !important;
 
   .username {
     margin-left: 1em;
@@ -10,7 +12,7 @@
 
   .threeDots {
     justify-content: flex-end;
-    color: #ECB365;
+    color: var(--icon);
     font-size: 20px;
   }
 
