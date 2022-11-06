@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { BsGearFill } from 'react-icons/bs';
-import { FaHistory, FaLayerGroup, FaBitcoin, FaHome, FaBookmark } from 'react-icons/fa';
+import { FaHistory, FaBitcoin, FaHome, FaBookmark } from 'react-icons/fa';
 import { Button } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -34,9 +35,24 @@ const TopRightCluster = () => {
 };
 
 
-
 const Navigator = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const autohide = document.querySelector('.navbar-custom');
+    var last_scrollY = 0;
+    window.addEventListener("scroll", () => {
+      const scrolling_up: boolean = (window.scrollY - last_scrollY) > 0 ? true: false;
+      if (scrolling_up) {
+        autohide.classList.remove('scrolling-down');
+        autohide.classList.add('scrolling-up');
+      } else {
+        autohide.classList.remove('scrolling-up');
+        autohide.classList.add('scrolling-down');
+      }
+      last_scrollY = window.scrollY;
+    });
+  }, []);
 
   const bottomButtonClick = navLink => {
     navigate(navLink);
