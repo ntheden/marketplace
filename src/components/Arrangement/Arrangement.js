@@ -8,7 +8,7 @@ import styles from "../Navigator/Navigator.module.scss";
 
 const Arrangement = () => {
   const { refreshFeed, setRefreshFeed } = useContext(FeedContext);
-  const [showMenu, setShowMenu] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [arrangement, setArrangement] = useState(
     localStorage.getItem("Arrangement") || "Newest"
   );
@@ -23,12 +23,12 @@ const Arrangement = () => {
 
   return (
     <>
-    <Button onClick={() => setShowMenu((prev) => !prev)} variant="link">
+    <Button onClick={() => setShowModal((prev) => !prev)} variant="link">
       <FaSortAmountDownAlt className={styles.topIcon} />
     </Button>
     <Modal
-      show={showMenu}
-      onHide={() => setShowMenu(false)}
+      show={showModal}
+      onHide={() => setShowModal(false)}
       centered={true}>
       <Modal.Body>
         <Radio

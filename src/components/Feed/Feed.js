@@ -14,13 +14,11 @@ const Feed = ({refreshFeed}) => {
   const [offerIds, setOfferIds] = useState([]);
 
   useEffect(() => {
-    console.log("API is at", consts.apiEndpoint);
     const getIds = async () => {
       try {
         let response = await axios.get(`${consts.apiEndpoint}/@bitcoinp2pmarketplace`);
         setOfferIds(response.data);
-        //setOfferIds([6310, 6250, 1758, 2664]);
-        console.log("offer ids are:", offerIds);
+        //Test mode: setOfferIds([6310, 6250, 1758, 2664]);
       } catch(err) {
         console.log(err);
       }
@@ -44,6 +42,7 @@ const Feed = ({refreshFeed}) => {
       items = getBookmarks();
     }
     // TODO: filter based on filters defined in localStorage
+    // TODO: filter based on current search params
     return items;
   };
 
@@ -78,13 +77,14 @@ const Feed = ({refreshFeed}) => {
     switch(arrangement) {
       case eArrangement.Shuffle:
         return shuffle(ar);
-      case eArrangement.Newest:
-        return ar.sort((first: number, second: number) => {
-          return (first > second ? -1 : 1)
-        })
       case eArrangement.Oldest:
         return ar.sort((first: number, second: number) => {
           return (first > second ? 1 : -1)
+        })
+      default:
+      case eArrangement.Newest:
+        return ar.sort((first: number, second: number) => {
+          return (first > second ? -1 : 1)
         })
     }
   }

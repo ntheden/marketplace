@@ -3,6 +3,7 @@ import { FaMoon, FaSun } from 'react-icons/fa';
 import { Button } from "react-bootstrap";
 
 import styles from "../Navigator/Navigator.module.scss";
+import { consts } from '../../config';
 
 const DarkMode = () => {
   const [isDark, setIsDark] = useState(true);
@@ -26,6 +27,7 @@ const DarkMode = () => {
 
   const changeTheme = useEffect(() => {
     if (isInit) {
+      console.log(`API is at ${consts.apiEndpoint}`);
       return;
     }
     //console.log('switching to ' + (isDark ? 'dark mode' : 'light mode'));

@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Spinner, Card } from "react-bootstrap";
 import { NavLink } from 'react-router-dom';
@@ -8,6 +7,7 @@ import Header from "./Header";
 import styles from "./OfferCard.module.scss";
 import { consts } from '../../config';
 import { getOffer } from '../../lib/offers';
+import { addToIndex } from '../../lib/indexing';
 
 
 const LoadingUser = {
@@ -22,6 +22,7 @@ const LoadingUser = {
 
 const mktplace = `${consts.apiEndpoint}/@bitcoinp2pmarketplace`
 
+
 const OfferCard = ({offerId}) => {
   const [user, setUser] = useState(LoadingUser);
   const [data, setData] = useState({});
@@ -30,6 +31,7 @@ const OfferCard = ({offerId}) => {
   useEffect(() => {
     const promise = getOffer(offerId);
     promise.then((resolved) => {
+      addToIndex(resolved.data);
       setData(resolved.data);
     }).catch((e) => console.log(e));
   }, [offerId]);
