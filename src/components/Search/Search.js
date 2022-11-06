@@ -1,30 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { Modal, Button } from "react-bootstrap";
 
-import { index, dataCache } from "../../lib/indexing";
+import { SearchContext } from "../../App";
+import { index } from "../../lib/indexing";
 import styles from "../Navigator/Navigator.module.scss";
 
 const Search = () => {
+  const { setSearchResults } = useContext(SearchContext);
   const [showInputModal, setShowInputModal] = useState(false);
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
 
   useEffect(() => {
-    setResults(index.search(query));
-  }, [query]);
-
-  // use later
-  const output = (
-    <ul>
-      {results.map((result) => (
-        <li key={result}>
-          {dataCache[result].message.caption}
-        </li>
-      ))};
-    </ul>
-  );
-  //console.log(output);
+    setSearchResults(index.search(query));
+  }, [query, setSearchResults]);
 
   return (
     <>

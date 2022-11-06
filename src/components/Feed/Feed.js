@@ -10,8 +10,9 @@ import { consts } from '../../config';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 
 
-const Feed = ({refreshFeed}) => {
+const Feed = props => {
   const [offerIds, setOfferIds] = useState([]);
+  const [listItems, setListItems] = useState();
 
   useEffect(() => {
     const getIds = async () => {
@@ -27,6 +28,7 @@ const Feed = ({refreshFeed}) => {
   }, []);
 
   const getBookmarks = () => {
+    // FIXME use JSON.parse instead of csvToArray
     const bookmarks = csvToArray(localStorage.getItem("Bookmarks"))[0];
     if (bookmarks[0] === "undefined") {
       return [];
@@ -34,15 +36,20 @@ const Feed = ({refreshFeed}) => {
     return bookmarks;
   };
 
-  const applyFilters = (items) => {
+  const applyFilters = items => {
     if (items === undefined) {
       return [];
     }
     if (window.location.pathname === "/bookmarks") {
       items = getBookmarks();
     }
-    // TODO: filter based on filters defined in localStorage
-    // TODO: filter based on current search params
+    //
+    // TODO(maybe): filter based on filters defined in localStorage
+    //
+    if (props.search.length > 0) {
+      // Filter out stuff that didn't match the active search
+      return items.filter(value => props.search.includes(value));
+    }
     return items;
   };
 
@@ -89,12 +96,15 @@ const Feed = ({refreshFeed}) => {
     }
   }
 
-  const items = listGroupItems(arrange(applyFilters(offerIds)));
+  useEffect(() => {
+    const items = listGroupItems(arrange(applyFilters(offerIds)));
+    setListItems(items);
+  }, [offerIds, props]);
 
   return (
     <div className="d-flex justify-content-center">
       <ListGroup className={styles.group}>
-        {items}
+        {listItems}
       </ListGroup>
     </div>
   );

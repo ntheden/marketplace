@@ -7,7 +7,7 @@ import { FeedContext } from "../../App";
 import styles from "../Navigator/Navigator.module.scss";
 
 const Arrangement = () => {
-  const { refreshFeed, setRefreshFeed } = useContext(FeedContext);
+  const { setRefreshFeed } = useContext(FeedContext);
   const [showModal, setShowModal] = useState(false);
   const [arrangement, setArrangement] = useState(
     localStorage.getItem("Arrangement") || "Newest"
@@ -19,7 +19,7 @@ const Arrangement = () => {
     }
     localStorage.setItem("Arrangement", arrangement);
     setRefreshFeed((prev) => !prev);
-  }, [arrangement]);
+  }, [arrangement, setRefreshFeed]);
 
   return (
     <>
