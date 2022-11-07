@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
 
 import OfferCard from "../OfferCard/OfferCard";
+import { Spinner } from "../Spinner/Spinner";
 import csvToArray from "../../lib/csv";
 import createEnum from "../../lib/enum";
 import styles from "./Feed.module.scss";
@@ -12,7 +13,7 @@ import { trackWindowScroll } from 'react-lazy-load-image-component';
 
 const Feed = props => {
   const [offerIds, setOfferIds] = useState([]);
-  const [listItems, setListItems] = useState();
+  const [listItems, setListItems] = useState(null);
 
   useEffect(() => {
     const getIds = async () => {
@@ -102,11 +103,19 @@ const Feed = props => {
   }, [offerIds, props]);
 
   return (
-    <div className="d-flex justify-content-center">
-      <ListGroup className={styles.group}>
-        {listItems}
-      </ListGroup>
-    </div>
+    <>
+    {(listItems !== null && listItems.length > 0) ? (
+      <div className="d-flex justify-content-center">
+        <ListGroup className={styles.group}>
+          {listItems}
+        </ListGroup>
+      </div>
+    ) : (
+      <div className="d-flex justify-content-center">
+        <Spinner size={120} />
+      </div>
+    )}
+    </>
   );
 };
 
