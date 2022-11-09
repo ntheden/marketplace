@@ -11,10 +11,20 @@
   font-size: 30px;
 }
 
+.iconSelected {
+  color: var(--icon);
+  opacity: 0.3;
+  font-size: 30px;
+}
+
 .topIcon {
   color: var(--icon);
   font-size: 20px;
   cursor: pointer;
+}
+
+.icon:hover, .iconSelected:hover, .topIcon:hover {
+  opacity: 0.3;
 }
 
 .iconCluster {
@@ -31,3 +41,4 @@
   display: block;
   text-color: white;
 }
+

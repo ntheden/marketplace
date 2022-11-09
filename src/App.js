@@ -21,6 +21,7 @@ function App() {
         <FeedContext.Provider value={{ refreshFeed, setRefreshFeed }}>
           <SearchContext.Provider value={{ searchResults, setSearchResults }}>
             <Navigator />
+            <header className="App-header" />
             <Routes>
               <Route path="/" element={<Feed refresh={refreshFeed} search={searchResults} />}/>
               <Route path="/bookmarks" element={<Feed refresh={refreshFeed} search={searchResults} />} />
@@ -30,6 +31,7 @@ function App() {
               <Route path="/listings/:peer_id" element={<Feed />} /> {/* TODO pass in peer_id */}
               <Route path="/settings" element={<Settings />} />
             </Routes>
+            <header className="App-header" />
           </SearchContext.Provider>
         </FeedContext.Provider>
       </BrowserRouter>
